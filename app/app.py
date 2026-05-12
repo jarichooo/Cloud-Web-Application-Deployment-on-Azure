@@ -5,18 +5,20 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = Flask(
-    __name__,
-    template_folder="../frontend/templates",
-    static_folder="../frontend/static"
-)
+app = Flask(__name__)
 
 def get_conn():
-    return pyodbc.connect(os.getenv("AZURE_SQL_CONNECTIONSTRING"))
+    conn_str = os.getenv("AZURE_SQL_CONNECTIONSTRING")
+
+    if not conn_str:
+        raise Exception("AZURE_SQL_CONNECTIONSTRING is missing in environment variables")
+
+    return pyodbc.connect(conn_str)
 
 def init_db():
     conn = get_conn()
     cursor = conn.cursor()
+
     cursor.execute("""
         IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='enrollments' AND xtype='U')
         CREATE TABLE enrollments (
@@ -29,12 +31,14 @@ def init_db():
             submitted_at DATETIME DEFAULT GETDATE()
         )
     """)
+
     conn.commit()
     conn.close()
 
 @app.route("/")
 def index():
     return render_template("index.html")
+
 
 @app.route("/submit", methods=["POST"])
 def submit():
@@ -54,26 +58,29 @@ def submit():
 
     conn.commit()
     conn.close()
+
     return redirect("/results")
+
 
 @app.route("/results")
 def results():
     conn = get_conn()
     cursor = conn.cursor()
+
     cursor.execute("""
         SELECT full_name, student_id, email, course, year_level, submitted_at
         FROM enrollments
         ORDER BY submitted_at DESC
     """)
 
-    columns = [col[0] for col in cursor.description]
+    columns = [column[0] for column in cursor.description]
     rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
 
     conn.close()
+
     return render_template("results.html", enrollments=rows)
+
 
 if __name__ == "__main__":
     init_db()
     app.run(debug=True)
-
-
