@@ -74,3 +74,4 @@ jobs:
           app-name: 'enrollment-app-csec3'
           slot-name: 'Production'
           
+
