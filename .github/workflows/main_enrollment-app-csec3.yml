@@ -19,13 +19,14 @@ jobs:
         run: |
           python -m venv antenv
           source antenv/bin/activate
-          pip install -r app/backend/requirements.txt
+          pip install -r app/requirements.txt
+
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
           path: |
-            app/backend/
+            app/
             !antenv/
 
   deploy:
@@ -47,10 +48,11 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_6C4E694E75EC42CE94C296EEB4663C11 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BEE0E8ACBFA8452281712798E1A99D55 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_932F753CC9044FACA5AB85A352423267 }}
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'enrollment-app-csec3'
           slot-name: 'Production'
-
+          package: app/
