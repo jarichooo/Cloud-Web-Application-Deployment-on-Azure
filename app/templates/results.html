@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enrollment Results</title>
+</head>
+<body>
+  <h1>Enrolled Students</h1>
+  <a href="/">Back to Form</a><br><br>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Student ID</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Year Level</th>
+        <th>Submitted At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in enrollments %}
+      <tr>
+        <td>{{ e.full_name }}</td>
+        <td>{{ e.student_id }}</td>
+        <td>{{ e.email }}</td>
+        <td>{{ e.course }}</td>
+        <td>{{ e.year_level }}</td>
+        <td>{{ e.submitted_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

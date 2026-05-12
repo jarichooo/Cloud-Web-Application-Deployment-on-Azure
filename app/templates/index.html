@@ -1,104 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloud Computing University Enrollment</title>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <meta charset="UTF-8">
+  <title>Student Enrollment</title>
 </head>
-
 <body>
-
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo-mark">CC</div>
-    <div class="header-text">
-      <h1>Cloud Computing University</h1>
-      <p>Online Enrollment System</p>
-    </div>
-  </div>
-</header>
-
-<div class="page-wrap">
-
-  <div class="notice">
-    <span class="notice-icon">ℹ️</span>
-    <span>Please fill out the enrollment form. Submission is final.</span>
-  </div>
-
-  <!-- ENROLLMENT FORM -->
+  <h1>Student Enrollment Form</h1>
   <form action="/submit" method="POST">
+    <label>Full Name</label><br>
+    <input type="text" name="full_name" required><br><br>
 
-    <div class="card">
-      <div class="card-header">
-        <div class="card-header-icon">🎓</div>
-        <div>
-          <h2>Enrollment Information</h2>
-          <p>Basic student details</p>
-        </div>
-      </div>
+    <label>Student ID</label><br>
+    <input type="text" name="student_id" required><br><br>
 
-      <div class="card-body">
+    <label>Email</label><br>
+    <input type="email" name="email" required><br><br>
 
-        <!-- FULL NAME -->
-        <div class="form-row cols-1">
-          <div class="form-group">
-            <label>Full Name <span class="req">*</span></label>
-            <input type="text" name="full_name" placeholder="Juan Dela Cruz" required>
-          </div>
-        </div>
+    <label>Course</label><br>
+    <input type="text" name="course" required><br><br>
 
-        <!-- STUDENT ID + EMAIL -->
-        <div class="form-row cols-2">
-          <div class="form-group">
-            <label>Student ID <span class="req">*</span></label>
-            <input type="text" name="student_id" placeholder="2024-00001" required>
-          </div>
+    <label>Year Level</label><br>
+    <input type="number" name="year_level" min="1" max="5" required><br><br>
 
-          <div class="form-group">
-            <label>Email Address <span class="req">*</span></label>
-            <input type="email" name="email" required>
-          </div>
-        </div>
-
-        <!-- YEAR + COURSE -->
-        <div class="form-row cols-2">
-          <div class="form-group">
-            <label>Year Level <span class="req">*</span></label>
-            <select name="year_level" required>
-              <option value="">— Select —</option>
-              <option>1st Year</option>
-              <option>2nd Year</option>
-              <option>3rd Year</option>
-              <option>4th Year</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Course / Program <span class="req">*</span></label>
-            <select name="course" required>
-              <option value="">— Select Course —</option>
-              <option>BS Information Technology</option>
-              <option>BS Computer Science</option>
-              <option>BS Civil Engineering</option>
-              <option>BS Business Administration</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- SUBMIT -->
-        <div class="btn-row">
-          <button type="submit" class="btn btn-gold">✓ Submit Enrollment</button>
-        </div>
-
-      </div>
-    </div>
-
+    <button type="submit">Enroll</button>
   </form>
-</div>
-
 </body>
 </html>
