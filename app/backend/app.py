@@ -5,11 +5,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="../frontend/templates",
+    static_folder="../frontend/static"
+)
 
 def get_conn():
-    conn_str = os.getenv("AZURE_SQL_CONNECTIONSTRING")
-    return pyodbc.connect(conn_str)
+    return pyodbc.connect(os.getenv("AZURE_SQL_CONNECTIONSTRING"))
 
 def init_db():
     conn = get_conn()
@@ -20,6 +23,7 @@ def init_db():
             id INT IDENTITY PRIMARY KEY,
             full_name NVARCHAR(100),
             student_id NVARCHAR(20),
+            email NVARCHAR(120),
             course NVARCHAR(100),
             year_level INT,
             submitted_at DATETIME DEFAULT GETDATE()
@@ -30,22 +34,24 @@ def init_db():
 
 @app.route("/")
 def index():
-    return render_template("templates/index.html")
+    return render_template("index.html")
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    full_name = request.form["full_name"]
-    email = request.form["email"]
-    student_id = request.form["student_id"]
-    course = request.form["course"]
-    year_level = request.form["year_level"]
-
     conn = get_conn()
     cursor = conn.cursor()
-    cursor.execute(
-        "INSERT INTO enrollments (full_name, student_id, email, course, year_level) VALUES (?, ?, ?, ?, ?)",
-        (full_name, student_id, email, course, year_level)
-    )
+
+    cursor.execute("""
+        INSERT INTO enrollments (full_name, student_id, email, course, year_level)
+        VALUES (?, ?, ?, ?, ?)
+    """, (
+        request.form["full_name"],
+        request.form["student_id"],
+        request.form["email"],
+        request.form["course"],
+        request.form["year_level"]
+    ))
+
     conn.commit()
     conn.close()
     return redirect("/results")
@@ -54,13 +60,18 @@ def submit():
 def results():
     conn = get_conn()
     cursor = conn.cursor()
-    cursor.execute("SELECT full_name, student_id, course, year_level, submitted_at FROM enrollments ORDER BY submitted_at DESC")
-    rows = cursor.fetchall()
+    cursor.execute("""
+        SELECT full_name, student_id, email, course, year_level, submitted_at
+        FROM enrollments
+        ORDER BY submitted_at DESC
+    """)
+
+    columns = [col[0] for col in cursor.description]
+    rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
+
     conn.close()
     return render_template("results.html", enrollments=rows)
 
 if __name__ == "__main__":
     init_db()
     app.run(debug=True)
-
-

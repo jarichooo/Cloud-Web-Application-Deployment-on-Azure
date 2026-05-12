@@ -6,7 +6,7 @@
 <title>Cloud Computing University Enrollment</title>
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../static/css/styles.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
 <body>
@@ -40,29 +40,32 @@
           <p>Basic student details</p>
         </div>
       </div>
-  
+
       <div class="card-body">
-  
-        <!-- NAME (UPDATED) -->
-        <div class="form-row cols-2">
+
+        <!-- FULL NAME -->
+        <div class="form-row cols-1">
           <div class="form-group">
-            <label>First Name <span class="req">*</span></label>
-            <input type="text" name="first_name" required>
-          </div>
-  
-          <div class="form-group">
-            <label>Last Name <span class="req">*</span></label>
-            <input type="text" name="last_name" required>
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" name="full_name" placeholder="Juan Dela Cruz" required>
           </div>
         </div>
-  
-        <!-- EMAIL + YEAR -->
+
+        <!-- STUDENT ID + EMAIL -->
         <div class="form-row cols-2">
+          <div class="form-group">
+            <label>Student ID <span class="req">*</span></label>
+            <input type="text" name="student_id" placeholder="2024-00001" required>
+          </div>
+
           <div class="form-group">
             <label>Email Address <span class="req">*</span></label>
             <input type="email" name="email" required>
           </div>
-  
+        </div>
+
+        <!-- YEAR + COURSE -->
+        <div class="form-row cols-2">
           <div class="form-group">
             <label>Year Level <span class="req">*</span></label>
             <select name="year_level" required>
@@ -73,10 +76,7 @@
               <option>4th Year</option>
             </select>
           </div>
-        </div>
-  
-        <!-- COURSE + CAMPUS -->
-        <div class="form-row cols-2">
+
           <div class="form-group">
             <label>Course / Program <span class="req">*</span></label>
             <select name="course" required>
@@ -87,26 +87,16 @@
               <option>BS Business Administration</option>
             </select>
           </div>
-  
-          <div class="form-group">
-            <label>Campus <span class="req">*</span></label>
-            <select name="campus" required>
-              <option value="">— Select Campus —</option>
-              <option>Main Campus – Nabua</option>
-              <option>Buhi Campus</option>
-              <option>Moon Campus</option>
-            </select>
-          </div>
         </div>
-  
+
         <!-- SUBMIT -->
         <div class="btn-row">
           <button type="submit" class="btn btn-gold">✓ Submit Enrollment</button>
         </div>
-  
+
       </div>
     </div>
-  
+
   </form>
 </div>
 
