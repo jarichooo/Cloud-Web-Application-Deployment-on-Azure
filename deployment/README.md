@@ -5,7 +5,7 @@ The following steps outline the process taken to provision the Azure infrastruct
 ### 1. Set up the Resource Group
 * **Resource Group:** Created a new Resource Group named `rg-enrollment-project`.
 * **Region:** Selected `Malaysia West` as the primary region for all resources.
-
+  ![Resource Group Setup](deployment/screenshots/setup_resource_group.png)
 ### 2. Provision the Azure SQL Database
 * **SQL Server & Database:** Created a new Azure SQL Server (`enrollment-server`) and a database named `enrollmentdb`.
 * **Compute Tier:** Selected the **Basic DTU** tier (5 DTUs, 2GB Storage) for cost-effective hosting.
