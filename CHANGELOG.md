@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Changed our mode of displaying the results for security reasons
+- Modified our workflow to prevent deploying when there are edits and commits on markdowns and reports
 
 ### Fixed
 - Fixed major deployment issues in the Connection String to proceed with Deployment to Azure
