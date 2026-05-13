@@ -28,11 +28,16 @@ def submit():
 def results():
     conn = get_conn()
     cursor = conn.cursor()
-    cursor.execute("SELECT full_name, student_id, email, course, year_level, submitted_at FROM enrollments ORDER BY submitted_at DESC")
+    cursor.execute("""
+        SELECT TOP 1 full_name, student_id, email, course, year_level, submitted_at 
+        FROM enrollments 
+        ORDER BY submitted_at DESC
+    """)
     columns = [col[0] for col in cursor.description]
-    rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
+    row = cursor.fetchone()
     conn.close()
-    return render_template("results.html", enrollments=rows)
+    enrollment = dict(zip(columns, row)) if row else None
+    return render_template("results.html", enrollment=enrollment)
 
 @app.route("/api/enroll", methods=["POST"])
 def enroll():
