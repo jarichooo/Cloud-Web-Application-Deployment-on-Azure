@@ -17,11 +17,11 @@ All resources are deployed in the **Malaysia West** region under the **Azure for
 
 | Service | Description | Est. Monthly Cost |
 |---|---|---|
-| App Service | Basic B1 — 1 Core, 1.75 GB RAM, 10 GB Storage, Linux OS | $12.41 |
-| Azure SQL Database | Single DB, Basic DTU, 5 DTUs, 2 GB storage, 1 instance | $4.90 |
+| App Service | Basic B1 — 1 Core, 1.75 GB RAM, 10 GB Storage, Linux OS | $12.46 |
+| Azure SQL Database | Single DB, Basic DTU, 5 DTUs, 2 GB storage, 1 instance | $4.97 |
 | Azure Monitor | Log analytics, Application Insights, Alert rules | $0.00 |
 | GitHub Actions | CI/CD pipeline (free tier) | $0.00 |
-| **Total** | | **~$17.31/month** |
+| **Total** | | **~$17.43/month** |
 
 *Estimates generated via Azure Pricing Calculator on May 12, 2026.*
 
