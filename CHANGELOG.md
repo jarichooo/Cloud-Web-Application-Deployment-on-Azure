@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 ## [2026-05-12] - Azure Web App Deployment with Flask Enrollment System
 
 ### Added
+- `johnlouie2004` - Added diagram to the repository
 - `jarichooo` - Initial directories and files for project structure
 - `ven-62` - Initial HTML and CSS for enrollment UI
 - `jarichooo` - Backend Flask API with core functionality
