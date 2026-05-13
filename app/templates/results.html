@@ -2,35 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Enrollment Results</title>
+  <title>Enrollment Confirmation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-  <h1>Enrolled Students</h1>
-  <a href="/">Back to Form</a><br><br>
-  <table border="1" cellpadding="8">
-    <thead>
-      <tr>
-        <th>Full Name</th>
-        <th>Student ID</th>
-        <th>Email</th>
-        <th>Course</th>
-        <th>Year Level</th>
-        <th>Submitted At</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for e in enrollments %}
-      <tr>
-        <td>{{ e.full_name }}</td>
-        <td>{{ e.student_id }}</td>
-        <td>{{ e.email }}</td>
-        <td>{{ e.course }}</td>
-        <td>{{ e.year_level }}</td>
-        <td>{{ e.submitted_at }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-mark">SE</div>
+      <div class="header-text">
+        <h1>Student Enrollment System</h1>
+        <p>Cloud Web Application</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrap">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">✅</div>
+        <div>
+          <h2>Enrollment Successful</h2>
+          <p>Your enrollment has been recorded</p>
+        </div>
+      </div>
+      <div class="card-body">
+        {% if enrollment %}
+        <div class="notice">
+          ✅ Your information has been successfully submitted.
+        </div>
+        <div class="form-row cols-2">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" value="{{ enrollment.full_name }}" disabled>
+          </div>
+          <div class="form-group">
+            <label>Student ID</label>
+            <input type="text" value="{{ enrollment.student_id }}" disabled>
+          </div>
+        </div>
+        <div class="form-row cols-1">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" value="{{ enrollment.email }}" disabled>
+          </div>
+        </div>
+        <div class="form-row cols-2">
+          <div class="form-group">
+            <label>Course</label>
+            <input type="text" value="{{ enrollment.course }}" disabled>
+          </div>
+          <div class="form-group">
+            <label>Year Level</label>
+            <input type="text" value="{{ enrollment.year_level }}" disabled>
+          </div>
+        </div>
+        <div class="form-row cols-1">
+          <div class="form-group">
+            <label>Submitted At</label>
+            <input type="text" value="{{ enrollment.submitted_at }}" disabled>
+          </div>
+        </div>
+        {% else %}
+        <p>No enrollment found.</p>
+        {% endif %}
+        <div class="btn-row">
+          <a href="/"><button class="btn-gold">Back to Form</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
-
