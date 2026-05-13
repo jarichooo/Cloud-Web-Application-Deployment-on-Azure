@@ -35,3 +35,6 @@ This project showcases a full-stack web application that manages student enrollm
 
 ##  Youtube Video URL
 - [https://youtu.be/ujz42kVA6qs](https://youtu.be/ujz42kVA6qs)
+
+##  Demo URL
+- [https://enrollment-app-csec3-hthrfvcxbagcb7bq.malaysiawest-01.azurewebsites.net/](https://enrollment-app-csec3-hthrfvcxbagcb7bq.malaysiawest-01.azurewebsites.net/)
