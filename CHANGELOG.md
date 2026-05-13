@@ -58,6 +58,7 @@ All notable changes to this project will be documented in this file.
 
 ### Chamged
 - `johnlouie2004` - Updated cost-estimate.md
+- `johnlouie2004` - Updated README.md with Youtube URL
 
 ### Removed
 - `johnlouie2004` - Removed azure_cost-estimate.png
