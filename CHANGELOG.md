@@ -5,16 +5,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
-- New features or resources added
+- Instead of viewing every enrollments, the developers changed it so that only the information of the enrollee is displayed after their initial enrollment.
 
 ### Changed
-- Modifications to existing resources or configurations
+- Changed our mode of displaying the results for security reasons
 
 ### Fixed
-- Bug fixes or corrections
+- Fixed major deployment issues in the Connection String to proceed with Deployment to Azure
 
 ### Removed
-- Deleted resources or deprecated code
+- Removed frontend and backend directory. The developers decided to merge the frontend and backend since it's a simple web application. And the focus of the task is Cloud Architecture.
 
 ---
 
