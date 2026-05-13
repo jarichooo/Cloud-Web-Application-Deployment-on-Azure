@@ -48,3 +48,18 @@ All notable changes to this project will be documented in this file.
 ### Removed
 - `jarichooo` - Removed .env file from version control to protect sensitive credentials
 
+
+## [2026-05-13] - Azure Web App Deployment with Flask Enrollment System
+
+### Added
+- `johnlouie2004` - Added azure_cost-estimate.png
+- `johnlouie2004` - Added cost_estimate.png
+- `johnlouie2004` - Added estimate.png
+
+### Chamged
+- `johnlouie2004` - Updated cost-estimate.md
+
+### Removed
+- `johnlouie2004` - Removed azure_cost-estimate.png
+- `johnlouie2004` - Removed cost_estimate.png
+- `johnlouie2004` - Removed estimate.png
