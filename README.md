@@ -9,7 +9,7 @@ This project showcases a full-stack web application that manages student enrollm
 ### Key Features
 
 - **Student Enrollment System** - Web form for students to enroll in courses
-- **Real-time Results Dashboard** - View all submitted enrollments with timestamps
+- **Enrollment Results** - View the most recent enrollment in the web page and list enrollments through the API
 - **Automated Deployment** - GitHub Actions CI/CD pipeline to Azure
 - **Secure Authentication** - Azure Managed Identities (OpenID Connect)
 - **Application Monitoring** - Azure Application Insights integration
@@ -38,3 +38,27 @@ This project showcases a full-stack web application that manages student enrollm
 
 ##  Demo URL
 - [https://enrollment-app-csec3-hthrfvcxbagcb7bq.malaysiawest-01.azurewebsites.net/](https://enrollment-app-csec3-hthrfvcxbagcb7bq.malaysiawest-01.azurewebsites.net/)
+
+## Methodology
+
+The Flask application accepts student enrollment details through an HTML form or JSON API, inserts them into Azure SQL with parameterized queries, and retrieves enrollment records for display. Azure App Service hosts the application. The deployment workflow uses GitHub Actions, while the documented Azure configuration adds monitoring and alerts.
+
+## Results and Evidence
+
+The source implements form submission (`/submit`), a results page for the latest enrollment (`/results`), and JSON endpoints for creating and listing enrollments (`/api/enroll` and `/api/enrollments`). The [deployment guide](deployment/README.md) records Azure resource setup, database connectivity checks, monitoring, and continuous deployment with screenshots. The demo and video above document the project presentation; current service availability and performance benchmarks are not established by this README.
+
+## Source, Data, and Documentation
+
+- [app/app.py](app/app.py) — Flask routes and SQL access.
+- [app/templates/](app/templates/) and [app/static/](app/static/) — frontend templates and styles.
+- [app/requirements.txt](app/requirements.txt) — Python dependencies.
+- [.github/workflows/](.github/workflows/) — Azure deployment automation.
+- [deployment/README.md](deployment/README.md) — resource setup and verification screenshots.
+- [diagram/](diagram/) — architecture diagrams.
+- [report/cost-estimate.md](report/cost-estimate.md) and [CHANGELOG.md](CHANGELOG.md) — cost planning and development history.
+
+Enrollment records are application data stored in Azure SQL; no downloadable research dataset or database export is included. Use fictional or authorized student details for demonstrations. The application reads its database connection from `AZURE_SQL_CONNECTIONSTRING`.
+
+## Topics
+
+`python` · `flask` · `azure` · `azure-app-service` · `azure-sql` · `github-actions` · `cloud-computing`
